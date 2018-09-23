@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,7 +26,9 @@ class Categories extends Component {
     }
 
     selectCategory = (category) => {
+      const { setActiveCategory } = this.props;
       alert(category.title);
+      setActiveCategory(category);
     };
 
     render() {
@@ -45,6 +48,7 @@ class Categories extends Component {
 
 const mapStateToProps = state => ({
   categories: state.categories,
+  activeCategory: state.activeCategory,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(Categoriesctions, dispatch);
