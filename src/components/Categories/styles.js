@@ -14,5 +14,14 @@ export const CategoriesContainer = styled.div`
 `;
 
 export const CategoriesItem = styled.div`
+    width: 100px;
+    height: 100%;
+    display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: red;
+    }
 `;
