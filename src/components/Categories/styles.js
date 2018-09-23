@@ -22,6 +22,6 @@ export const CategoriesItem = styled.div`
     justify-content: center;
 
     &:hover {
-        background-color: red;
+        background-color: #dd6a6b;
     }
 `;
