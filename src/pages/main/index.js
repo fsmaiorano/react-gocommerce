@@ -1,18 +1,11 @@
-import React, { Fragment } from 'react';
-
-import Header from '../../components/Header';
-import Categories from '../../components/Categories';
+import React from 'react';
 
 import { Container } from './styles';
 
 const Main = () => (
-  <Fragment>
-    <Header />
-    <Categories />
-    <Container>
-      <h1>Main Page</h1>
-    </Container>
-  </Fragment>
+  <Container>
+    <h1>Main Page</h1>
+  </Container>
 );
 
 export default Main;
