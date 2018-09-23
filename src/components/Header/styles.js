@@ -18,9 +18,11 @@ export const HeaderContainer = styled.div`
         color: grey;
         align-items: baseline;
         text-decoration: none;
+        font-size: 1.6rem;
 
         i {
-            font-size: 20px;
+            font-size: 2rem;
+            margin-right: 7px;
         }
     }
 `;
