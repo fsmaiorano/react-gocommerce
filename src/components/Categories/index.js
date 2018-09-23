@@ -9,6 +9,14 @@ import { CategoriesContainer } from './styles';
 class Categories extends Component {
     static propTypes = {
       getCategories: PropTypes.func.isRequired,
+      categories: PropTypes.shape({
+        data: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number,
+            title: PropTypes.string,
+          }),
+        ),
+      }).isRequired,
     };
 
     componentDidMount() {
