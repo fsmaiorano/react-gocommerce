@@ -5,6 +5,7 @@ export const HeaderContainer = styled.div`
     height: 70px;
     display: flex;
     position: relative;
+    font-size: 1.8rem;
     align-items: center;
     justify-content: space-around;
 

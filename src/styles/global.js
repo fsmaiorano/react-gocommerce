@@ -18,7 +18,7 @@ injectGlobal`
     font-family: sans-serif;
   }
   html, body, #root {
-    height: 100%;
+    font-size: 62.5%;
   }
   h1,h2,h3 {
     font-family: sans-serif;
