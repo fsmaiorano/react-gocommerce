@@ -24,11 +24,20 @@ class Categories extends Component {
       getCategories();
     }
 
+    selectCategory = (category) => {
+      alert(category.title);
+    };
+
     render() {
       const { categories } = this.props;
       return (
         <CategoriesContainer>
-          {!!categories && categories.data.map(category => <div key={category.id}>{category.title}</div>)}
+          {!!categories
+                    && categories.data.map(category => (
+                      <div key={category.id} onClick={() => this.selectCategory(category)} role="presentation">
+                        {category.title}
+                      </div>
+                    ))}
         </CategoriesContainer>
       );
     }
