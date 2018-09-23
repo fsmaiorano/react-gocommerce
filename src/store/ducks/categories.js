@@ -1,10 +1,13 @@
 export const Types = {
   GET_CATEGORIES: 'categories/GET_CATEGORIES',
+  GET_CATEGORIES_SUCCESS: 'categories/GET_CATEGORIES_SUCCESS',
+  GET_CATEGORIES_FAILURE: 'categories/GET_CATEGORIES_FAILURE',
 };
 
 const INITIAL_STATE = {
   feedback: null,
-  data: [],
+  categories: [],
+  isLoading: false,
 };
 
 export default function categories(state = INITIAL_STATE, action) {
@@ -12,7 +15,20 @@ export default function categories(state = INITIAL_STATE, action) {
     case Types.GET_CATEGORIES:
       return {
         ...state,
-        data: [...state.data],
+        categories: [...state.data],
+        isLoading: true,
+      };
+    case Types.GET_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        categories: [...state.data],
+        isLoading: false,
+      };
+    case Types.GET_CATEGORIES_FAILURE:
+      return {
+        ...state,
+        feedback: [...state.error],
+        isLoading: false,
       };
     default:
       return state;
@@ -20,8 +36,15 @@ export default function categories(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getCategories: categories => ({
+  getCategories: () => ({
     type: Types.GET_CATEGORIES,
-    payload: { categories },
+  }),
+  getCategoriesSuccess: categoriesList => ({
+    type: Types.GET_CATEGORIES_SUCCESS,
+    payload: { categoriesList },
+  }),
+  getCategoriesFailure: error => ({
+    type: Types.GET_CATEGORIES_FAILURE,
+    payload: { error },
   }),
 };
