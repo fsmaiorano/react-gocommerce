@@ -6,7 +6,7 @@ export const Types = {
 
 const INITIAL_STATE = {
   feedback: null,
-  categories: [],
+  data: [],
   isLoading: false,
 };
 
@@ -20,7 +20,7 @@ export default function categories(state = INITIAL_STATE, action) {
     case Types.GET_CATEGORIES_SUCCESS:
       return {
         ...state,
-        categories: [...action.payload.categoriesList],
+        data: [...action.payload.categoriesList],
         isLoading: false,
       };
     case Types.GET_CATEGORIES_FAILURE:

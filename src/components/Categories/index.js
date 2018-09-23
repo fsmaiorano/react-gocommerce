@@ -17,9 +17,10 @@ class Categories extends Component {
     }
 
     render() {
+      const { categories } = this.props;
       return (
         <CategoriesContainer>
-          <h1>Categories</h1>
+          {!!categories && categories.data.map(category => <div key={category.id}>{category.title}</div>)}
         </CategoriesContainer>
       );
     }
