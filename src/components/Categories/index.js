@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as Categoriesctions } from '../../store/ducks/categories';
 
-import { CategoriesContainer } from './styles';
+import { CategoriesContainer, CategoriesItem } from './styles';
 
 class Categories extends Component {
     static propTypes = {
@@ -34,9 +34,9 @@ class Categories extends Component {
         <CategoriesContainer>
           {!!categories
                     && categories.data.map(category => (
-                      <div key={category.id} onClick={() => this.selectCategory(category)} role="presentation">
+                      <CategoriesItem key={category.id} onClick={() => this.selectCategory(category)} role="presentation">
                         {category.title}
-                      </div>
+                      </CategoriesItem>
                     ))}
         </CategoriesContainer>
       );
