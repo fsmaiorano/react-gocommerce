@@ -15,19 +15,18 @@ export default function categories(state = INITIAL_STATE, action) {
     case Types.GET_CATEGORIES:
       return {
         ...state,
-        categories: [...state.data],
         isLoading: true,
       };
     case Types.GET_CATEGORIES_SUCCESS:
       return {
         ...state,
-        categories: [...state.data],
+        categories: [...action.payload.categoriesList],
         isLoading: false,
       };
     case Types.GET_CATEGORIES_FAILURE:
       return {
         ...state,
-        feedback: [...state.error],
+        feedback: [...action.payload.error],
         isLoading: false,
       };
     default:
