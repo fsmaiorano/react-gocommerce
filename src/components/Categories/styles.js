@@ -22,15 +22,11 @@ export const CategoriesItem = styled.li`
     justify-content: center;
 
     a {
-        color: #fff;
+        color: #f1e2e2;
         height: 100%;
         display: flex;
         align-items: center;
         text-decoration: none;
-    }
-
-    .activeStyle {
-        color: yellow;
     }
 
     &:hover {

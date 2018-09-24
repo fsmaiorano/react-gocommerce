@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -34,15 +34,22 @@ class Categories extends Component {
     };
 
     render() {
-      const { categories, activeCategory } = this.props;
+      const { categories } = this.props;
       return (
         <CategoriesContainer>
           {!!categories
                     && categories.data.map(category => (
                       <CategoriesItem key={category.id}>
-                        <Link onClick={() => this.selectCategory(category)} to={{ pathname: `/categoria/${category.id}` }}>
+                        <NavLink
+                          activeStyle={{
+                            fontWeight: 'bold',
+                            color: '#ffff',
+                          }}
+                          onClick={() => this.selectCategory(category)}
+                          to={{ pathname: `/categoria/${category.id}` }}
+                        >
                           {category.title}
-                        </Link>
+                        </NavLink>
                       </CategoriesItem>
                     ))}
         </CategoriesContainer>
