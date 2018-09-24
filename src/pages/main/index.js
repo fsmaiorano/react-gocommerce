@@ -17,11 +17,8 @@ class Main extends Component {
     }
 
     render() {
-      return (
-        <Container>
-          <h1>Main Page</h1>
-        </Container>
-      );
+      const { products } = this.props;
+      return <Container>{!!products && products.data.map(product => <p>{product.name}</p>)}</Container>;
     }
 }
 
