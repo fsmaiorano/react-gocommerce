@@ -9,7 +9,7 @@ export const Types = {
 
 const INITIAL_STATE = {
   feedback: null,
-  activeCategory: {},
+  activeCategory: null,
   data: [],
   isLoading: false,
 };

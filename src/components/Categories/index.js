@@ -10,6 +10,8 @@ import { CategoriesContainer, CategoriesItem } from './styles';
 class Categories extends Component {
     static propTypes = {
       getCategories: PropTypes.func.isRequired,
+      setActiveCategory: PropTypes.func.isRequired,
+      getActiveCategory: PropTypes.func.isRequired,
       categories: PropTypes.shape({
         data: PropTypes.arrayOf(
           PropTypes.shape({
@@ -21,24 +23,26 @@ class Categories extends Component {
     };
 
     componentDidMount() {
-      const { getCategories } = this.props;
+      const { getCategories, getActiveCategory } = this.props;
       getCategories();
+      getActiveCategory();
     }
 
     selectCategory = (category) => {
       const { setActiveCategory } = this.props;
-      alert(category.title);
       setActiveCategory(category);
     };
 
     render() {
-      const { categories } = this.props;
+      const { categories, activeCategory } = this.props;
       return (
         <CategoriesContainer>
           {!!categories
                     && categories.data.map(category => (
-                      <CategoriesItem key={category.id} onClick={() => this.selectCategory(category)} role="presentation">
-                        {category.title}
+                      <CategoriesItem key={category.id}>
+                        <Link onClick={() => this.selectCategory(category)} to={{ pathname: `/categoria/${category.id}` }}>
+                          {category.title}
+                        </Link>
                       </CategoriesItem>
                     ))}
         </CategoriesContainer>
