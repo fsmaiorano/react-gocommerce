@@ -10,6 +10,6 @@ export function* getCategories() {
 
     yield put(CategoriesActions.getCategoriesSuccess(data));
   } catch (err) {
-    yield put(CategoriesActions.getCategoriesFailure('Erro ao adicionar usuário'));
+    yield put(CategoriesActions.getCategoriesFailure('Erro ao carregar as categorias'));
   }
 }
