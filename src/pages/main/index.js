@@ -6,6 +6,8 @@ import { Creators as ProductsAction } from '../../store/ducks/products';
 
 import { Container } from './styles';
 
+import Products from '../../components/Products';
+
 class Main extends Component {
     static propTypes = {
       getProducts: PropTypes.func.isRequired,
@@ -18,7 +20,8 @@ class Main extends Component {
 
     render() {
       const { products } = this.props;
-      return <Container>{!!products && products.data.map(product => <p>{product.name}</p>)}</Container>;
+      return <Container>{!!products && <Products products={products} />}</Container>;
+      //   return <Container>{!!products && products.data.map(product => <p>{product.name}</p>)}</Container>;
     }
 }
 
