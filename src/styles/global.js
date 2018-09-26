@@ -19,6 +19,7 @@ injectGlobal`
   }
   html, body, #root {
     font-size: 62.5%;
+    font-family: 'Lato'
   }
   h1,h2,h3 {
     font-family: sans-serif;

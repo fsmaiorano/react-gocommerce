@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 90%;
+    width: 130rem;
     height: 100%;
     position: relative;
 
@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Product = styled.div`
     width: 30rem;
-    height: 56.5rem;
+    height: 46.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +23,7 @@ export const Product = styled.div`
     .product-name {
         font-weight: bold;
         margin-top: 1.5rem;
-        font-size: 2.2rem;
+        font-size: 1.9rem;
     }
 
     .product-brand {
@@ -36,11 +36,11 @@ export const Product = styled.div`
         margin-top: 1.3rem;
         font-weight: bold;
         font-size: 2.2rem;
-        color: green;
+        color: #5ee0cf;
     }
 
     img {
         margin-top: 4rem;
-        width: 27rem;
+        width: 20rem;
     }
 `;
