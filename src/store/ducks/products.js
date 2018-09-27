@@ -40,7 +40,6 @@ export default function products(state = INITIAL_STATE, action) {
         isLoading: true,
       };
     case Types.GET_PRODUCT_BY_ID_SUCCESS:
-      debugger;
       return {
         ...state,
         isLoading: false,

@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as ProductsAction } from '../../store/ducks/products';
 
+import Products from '../../components/Products';
+import { Container } from './styles';
+
 class Category extends Component {
     state = {
       category: null,
@@ -20,14 +23,9 @@ class Category extends Component {
     };
 
     render() {
-      const { match } = this.props;
+      const { match, products } = this.props;
       this.selectedCategory(match.params.id);
-      return (
-        <h1>
-                Categoria
-          {match.params.id}
-        </h1>
-      );
+      return <Container>{!!products && <Products products={products} />}</Container>;
     }
 }
 
