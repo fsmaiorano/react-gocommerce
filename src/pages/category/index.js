@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as ProductsAction } from '../../store/ducks/products';
 
 class Category extends Component {
     state = {
@@ -9,8 +12,10 @@ class Category extends Component {
 
     selectedCategory = (categoryId) => {
       const { category } = this.state;
+      const { getProductById } = this.props;
       if (category !== categoryId) {
         this.setState({ category: categoryId });
+        getProductById(categoryId);
       }
     };
 
@@ -26,4 +31,13 @@ class Category extends Component {
     }
 }
 
-export default Category;
+const mapStateToProps = state => ({
+  products: state.products,
+});
+
+const dispatchStateToProps = dispatch => bindActionCreators(ProductsAction, dispatch);
+
+export default connect(
+  mapStateToProps,
+  dispatchStateToProps,
+)(Category);

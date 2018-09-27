@@ -34,6 +34,24 @@ export default function products(state = INITIAL_STATE, action) {
         feedback: [...action.payload.error],
       };
 
+    case Types.GET_PRODUCT_BY_ID:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case Types.GET_PRODUCT_BY_ID_SUCCESS:
+      debugger;
+      return {
+        ...state,
+        isLoading: false,
+        data: [...action.payload.product],
+      };
+    case Types.GET_PRODUCT_BY_ID_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        feedback: [...action.payload.error],
+      };
     default:
       return state;
   }
@@ -49,6 +67,19 @@ export const Creators = {
   }),
   getProductsFailure: error => ({
     type: Types.GET_PRODUCTS_FAILURE,
+    payload: { error },
+  }),
+
+  getProductById: id => ({
+    type: Types.GET_PRODUCT_BY_ID,
+    payload: { id },
+  }),
+  getProductByIdSuccess: product => ({
+    type: Types.GET_PRODUCT_BY_ID_SUCCESS,
+    payload: { product },
+  }),
+  getProductByIdFailure: error => ({
+    type: Types.GET_PRODUCT_BY_ID_FAILURE,
     payload: { error },
   }),
 };

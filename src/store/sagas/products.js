@@ -12,3 +12,13 @@ export function* getProducts() {
     yield put(ProductsAction.getProductsFailure('Erro ao carregar os produtos'));
   }
 }
+
+export function* getProductById(action) {
+  try {
+    const { data } = yield call(api.get, '/category_products');
+    const productCategory = data.filter(c => c.id === parseInt(action.payload.id, 0))[0].products;
+    yield put(ProductsAction.getProductByIdSuccess(productCategory));
+  } catch (err) {
+    yield put(ProductsAction.getProductByIdFailure('Erro ao carregar o produto'));
+  }
+}
