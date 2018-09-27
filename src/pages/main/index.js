@@ -11,14 +11,16 @@ import Products from '../../components/Products';
 class Main extends Component {
     static propTypes = {
       getProducts: PropTypes.func.isRequired,
-      products: PropTypes.arrayOf({
-        data: PropTypes.shape({
-          id: PropTypes.number,
-          price: PropTypes.number,
-          name: PropTypes.string,
-          brand: PropTypes.string,
-          image: PropTypes.string,
-        }),
+      products: PropTypes.shape({
+        data: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number,
+            price: PropTypes.number,
+            name: PropTypes.string,
+            brand: PropTypes.string,
+            image: PropTypes.string,
+          }),
+        ),
       }).isRequired,
     };
 
@@ -29,7 +31,7 @@ class Main extends Component {
 
     render() {
       const { products } = this.props;
-      return <Container>{!!products && <Products products={products} />}</Container>;
+      return <Container>{products.data.length > 0 && <Products products={products} />}</Container>;
     }
 }
 

@@ -14,15 +14,21 @@ class Category extends Component {
 
     static propTypes = {
       getProductById: PropTypes.func.isRequired,
-      match: PropTypes.func.isRequired,
-      products: PropTypes.arrayOf({
-        data: PropTypes.shape({
-          id: PropTypes.number,
-          price: PropTypes.number,
-          name: PropTypes.string,
-          brand: PropTypes.string,
-          image: PropTypes.string,
-        }),
+      match: PropTypes.shape({
+        params: PropTypes.shape({
+          id: PropTypes.node,
+        }).isRequired,
+      }).isRequired,
+      products: PropTypes.shape({
+        data: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number,
+            price: PropTypes.number,
+            name: PropTypes.string,
+            brand: PropTypes.string,
+            image: PropTypes.string,
+          }),
+        ),
       }).isRequired,
     };
 
