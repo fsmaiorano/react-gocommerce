@@ -9,6 +9,11 @@ export const Container = styled.div`
     align-content: center;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
 `;
 
 export const Product = styled.div`
