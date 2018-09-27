@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as ProductsAction } from '../../store/ducks/products';
@@ -11,7 +12,19 @@ class Category extends Component {
       category: null,
     };
 
-    componentDidMount() {}
+    static propTypes = {
+      getProductById: PropTypes.func.isRequired,
+      match: PropTypes.func.isRequired,
+      products: PropTypes.arrayOf({
+        data: PropTypes.shape({
+          id: PropTypes.number,
+          price: PropTypes.number,
+          name: PropTypes.string,
+          brand: PropTypes.string,
+          image: PropTypes.string,
+        }),
+      }).isRequired,
+    };
 
     selectedCategory = (categoryId) => {
       const { category } = this.state;

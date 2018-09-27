@@ -11,6 +11,15 @@ import Products from '../../components/Products';
 class Main extends Component {
     static propTypes = {
       getProducts: PropTypes.func.isRequired,
+      products: PropTypes.arrayOf({
+        data: PropTypes.shape({
+          id: PropTypes.number,
+          price: PropTypes.number,
+          name: PropTypes.string,
+          brand: PropTypes.string,
+          image: PropTypes.string,
+        }),
+      }).isRequired,
     };
 
     componentDidMount() {
@@ -21,7 +30,6 @@ class Main extends Component {
     render() {
       const { products } = this.props;
       return <Container>{!!products && <Products products={products} />}</Container>;
-      //   return <Container>{!!products && products.data.map(product => <p>{product.name}</p>)}</Container>;
     }
 }
 
