@@ -23,9 +23,11 @@ export const CategoriesItem = styled.li`
 
     a {
         color: #f1e2e2;
+        width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
         text-decoration: none;
     }
 
