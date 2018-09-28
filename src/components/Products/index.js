@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Container, Product } from './styles';
 
 class Products extends Component {
     static propTypes = {
+      history: PropTypes.func.isRequired,
       products: PropTypes.shape({
         data: PropTypes.arrayOf(
           PropTypes.shape({
@@ -19,27 +20,30 @@ class Products extends Component {
       }).isRequired,
     };
 
+    goDetails = (product) => {
+      const { history } = this.props;
+      history.push(`/produto/${product.id}`);
+    };
+
     render() {
       const { products } = this.props;
       return (
         <Container>
           {!!products.data
                     && products.data.map(product => (
-                      <NavLink to={{ pathname: `/produto/${product.id}` }} key={product.id}>
-                        <Product>
-                          <img src={product.image} alt={product.name} />
-                          <p className="product-name">{product.name}</p>
-                          <p className="product-brand">{product.brand}</p>
-                          <p className="product-price">
-                                    R$&nbsp;
-                            {product.price.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
-                          </p>
-                        </Product>
-                      </NavLink>
+                      <Product onClick={() => this.goDetails(product)} key={product.id}>
+                        <img src={product.image} alt={product.name} />
+                        <p className="product-name">{product.name}</p>
+                        <p className="product-brand">{product.brand}</p>
+                        <p className="product-price">
+                                R$&nbsp;
+                          {product.price.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
+                        </p>
+                      </Product>
                     ))}
         </Container>
       );
     }
 }
 
-export default Products;
+export default withRouter(Products);
