@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as ProductsActions } from '../../store/ducks/products';
 
 import { Container, Product } from './styles';
 
 class Products extends Component {
     static propTypes = {
       history: PropTypes.func.isRequired,
+      setProduct: PropTypes.func.isRequired,
       products: PropTypes.shape({
         data: PropTypes.arrayOf(
           PropTypes.shape({
@@ -21,7 +25,8 @@ class Products extends Component {
     };
 
     goDetails = (product) => {
-      const { history } = this.props;
+      const { history, setProduct } = this.props;
+      setProduct(product);
       history.push(`/produto/${product.id}`);
     };
 
@@ -46,4 +51,9 @@ class Products extends Component {
     }
 }
 
-export default withRouter(Products);
+const dispatchStateToProps = dispatch => bindActionCreators(ProductsActions, dispatch);
+
+export default connect(
+  null,
+  dispatchStateToProps,
+)(withRouter(Products));

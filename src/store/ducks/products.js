@@ -6,10 +6,14 @@ export const Types = {
   GET_PRODUCT_BY_ID: 'products/GET_PRODUCTS_BY_ID',
   GET_PRODUCT_BY_ID_SUCCESS: 'products/GET_PRODUCTS_BY_ID_SUCCESS',
   GET_PRODUCT_BY_ID_FAILURE: 'products/GET_PRODUCTS_BY_ID_FAILURE',
+
+  SET_PRODUCT: 'products/SET_PRODUCT',
+  GET_PRODUCT: 'products/GET_PRODUCT',
 };
 
 const INITIAL_STATE = {
   isLoading: false,
+  activeProduct: null,
   data: [],
   feedback: null,
 };
@@ -51,6 +55,18 @@ export default function products(state = INITIAL_STATE, action) {
         isLoading: false,
         feedback: [...action.payload.error],
       };
+
+    case Types.SET_PRODUCT:
+      return {
+        ...state,
+        activeProduct: action.payload.product,
+      };
+
+    case Types.GET_PRODUCT:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }
@@ -80,5 +96,14 @@ export const Creators = {
   getProductByIdFailure: error => ({
     type: Types.GET_PRODUCT_BY_ID_FAILURE,
     payload: { error },
+  }),
+
+  setProduct: product => ({
+    type: Types.SET_PRODUCT,
+    payload: { product },
+  }),
+  getProduct: product => ({
+    type: Types.GET_PRODUCT,
+    payload: { product },
   }),
 };
