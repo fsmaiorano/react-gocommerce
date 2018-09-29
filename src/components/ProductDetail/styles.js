@@ -36,7 +36,7 @@ export const Container = styled.div`
             margin-top: 3rem;
             font-weight: bold;
             font-size: 3rem;
-            color: #5ee0cf;
+            color: #54b6a9;
             margin-bottom: 5rem;
         }
     }

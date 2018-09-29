@@ -24,6 +24,7 @@ export const Product = styled.div`
     align-items: center;
     background-color: #fff;
     margin-top: 2rem;
+    cursor: pointer;
 
     .product-name {
         font-weight: bold;
@@ -41,7 +42,7 @@ export const Product = styled.div`
         margin-top: 1.3rem;
         font-weight: bold;
         font-size: 2.2rem;
-        color: #5ee0cf;
+        color: #54b6a9;
     }
 
     img {

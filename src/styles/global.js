@@ -27,11 +27,17 @@ injectGlobal`
 
   button {
       border: none;
-      background-color: #5ee0cf;
+      /* background-color: #5ee0cf; */
+      background-color: #54b6a9;
       font-weight: bold;
       font-size: 2.2rem;
       color: #fff;
       width: 30rem;
       height: 5rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #5ee0cf;
+      }
   }
 `;
