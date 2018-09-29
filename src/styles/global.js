@@ -24,4 +24,14 @@ injectGlobal`
   h1,h2,h3 {
     font-family: sans-serif;
   }
+
+  button {
+      border: none;
+      background-color: #5ee0cf;
+      font-weight: bold;
+      font-size: 2.2rem;
+      color: #fff;
+      width: 30rem;
+      height: 5rem;
+  }
 `;
