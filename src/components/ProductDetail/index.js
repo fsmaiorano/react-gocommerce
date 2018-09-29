@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class ProductDetail extends Component {
-    render() {
-        return (
-            
-        )
-    }
+  render() {
+    const { product } = this.props;
+    return <h1>{product.name}</h1>;
+  }
 }
 
 export default ProductDetail;

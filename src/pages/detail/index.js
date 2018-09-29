@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import ProductDetail from '../../components/ProductDetail';
+
 import { Container } from './styles';
 
 class Detail extends Component {
@@ -16,7 +18,7 @@ class Detail extends Component {
       <div>
         {products.activeProduct !== null ? (
           <Container>
-            <p>{products.activeProduct.name}</p>
+            <ProductDetail product={products.activeProduct} />
           </Container>
         ) : null}
       </div>
