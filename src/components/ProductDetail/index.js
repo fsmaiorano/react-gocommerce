@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as CartActions } from '../../store/ducks/cart';
 
 import { Container } from './styles';
 
 class ProductDetail extends Component {
     addItemToCart = (product) => {
-      console.log(product);
+      const { addCart } = this.props;
+      addCart(product);
     };
 
     render() {
@@ -30,4 +34,13 @@ class ProductDetail extends Component {
     }
 }
 
-export default ProductDetail;
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+const dispathStateToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  dispathStateToProps,
+)(ProductDetail);
