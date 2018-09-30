@@ -18,14 +18,12 @@ export default function cart(state = INITIAL_STATE, action) {
         ...state,
       };
     case Types.ADD_CART:
-      debugger;
       return {
         ...state,
         items: state.items + 1,
-        data: [...state.data, ...action.payload.item],
+        data: [...state.data, action.payload.item],
       };
     case Types.DELETE_CART:
-      debugger;
       return {
         ...state,
       };
