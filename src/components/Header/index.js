@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { HeaderContainer } from './styles';
@@ -7,12 +7,12 @@ import { HeaderContainer } from './styles';
 const Header = ({ cart }) => (
   <HeaderContainer>
     <h1>GoCommerce</h1>
-    <a href="/">
+    <Link to="/carrinho">
       <i className="fa fa-shopping-cart" aria-hidden="true" />
             &nbsp;Meu Carrinho&nbsp;(
       {cart.data.length}
 )
-    </a>
+    </Link>
   </HeaderContainer>
 );
 
