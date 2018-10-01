@@ -25,26 +25,28 @@ class Cart extends Component {
       const { cartItems } = this.state;
       return (
         <Container>
-          <Table>
-            <TableRow>
-              <TableHeader>PRODUTO</TableHeader>
-              <TableHeader>VALOR</TableHeader>
-              <TableHeader>QTD</TableHeader>
-              <TableHeader>SUBTOTAL</TableHeader>
-            </TableRow>
-            <TableRow>
-              {!!cartItems && cartItems.length > 0
-                ? cartItems.map(item => (
+          {!!cartItems && cartItems.length > 0 ? (
+            <Table>
+              <TableRow>
+                <TableHeader>PRODUTO</TableHeader>
+                <TableHeader>VALOR</TableHeader>
+                <TableHeader>QTD</TableHeader>
+                <TableHeader>SUBTOTAL</TableHeader>
+              </TableRow>
+              <TableRow>
+                {cartItems.map(item => (
                   <Fragment>
                     <TableData>{item.name}</TableData>
-                    <TableData>data2</TableData>
+                    <TableData>{item.price}</TableData>
                     <TableData>data3</TableData>
                     <TableData>data4</TableData>
                   </Fragment>
-                ))
-                : null}
-            </TableRow>
-          </Table>
+                ))}
+              </TableRow>
+            </Table>
+          ) : (
+            <p>O carrinho está vazio!</p>
+          )}
         </Container>
       );
     }
