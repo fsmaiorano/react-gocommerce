@@ -7,7 +7,9 @@ export const Container = styled.div`
     font-size: 2.1rem;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 `;
 
 export const Table = styled.table`
@@ -48,4 +50,18 @@ export const TableData = styled.td`
                 margin-right: 3rem;
             }
         `};
+`;
+
+export const Total = styled.div`
+    color: #54b6a9;
+    position: relative;
+    text-align: right;
+    width: 70%;
+`;
+
+export const Feedback = styled.div`
+    color: grey;
+    display: flex;
+    margin-top: 10rem;
+    justify-content: center;
 `;

@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   data: [],
   isLoading: false,
   items: 0,
+  total: 0,
 };
 
 export default function cart(state = INITIAL_STATE, action) {
@@ -25,6 +26,7 @@ export default function cart(state = INITIAL_STATE, action) {
           ...state,
           items: state.items + 1,
           data: [...state.data, action.payload.item],
+          total: state.total + action.payload.item.price,
         };
       }
       item.quantity += +1;
@@ -32,15 +34,16 @@ export default function cart(state = INITIAL_STATE, action) {
         ...state,
         items: state.items + 1,
         data: [...state.data, ...item],
+        total: state.total + action.payload.item.price,
       };
 
     case Types.DELETE_CART:
-      debugger;
       const filtered = state.data.filter(x => x.id !== action.payload.item.id);
       state.items -= action.payload.item.quantity;
       return {
         ...state,
         data: [...filtered],
+        total: state.total + action.payload.item.price,
       };
     default:
       return state;

@@ -4,23 +4,23 @@ import { bindActionCreators } from 'redux';
 import { Creators as CartActions } from '../../store/ducks/cart';
 
 import {
-  Container, Table, TableHeader, TableRow, TableData,
+  Container, Table, TableHeader, TableRow, TableData, Feedback, Total,
 } from './styles';
 
 class Cart extends Component {
-
     removeItem = (item) => {
       const { deleteCart } = this.props;
       deleteCart(item);
     };
 
     render() {
-    const { cart } = this.props;
+      const { cart } = this.props;
       return (
         <Container>
           {!!cart && cart.data.length > 0 ? (
-            <Table>
-              <TableRow>
+            <Fragment>
+              <Table>
+                  <TableRow>
                 <TableHeader />
                 <TableHeader>PRODUTO</TableHeader>
                 <TableHeader>VALOR</TableHeader>
@@ -28,7 +28,7 @@ class Cart extends Component {
                 <TableHeader>SUBTOTAL</TableHeader>
                 <TableHeader />
               </TableRow>
-              {cart.data.map(item => (
+                  {cart.data.map(item => (
                 <TableRow>
                   <Fragment>
                     <TableData image>
@@ -53,9 +53,18 @@ class Cart extends Component {
                   </Fragment>
                 </TableRow>
               ))}
-            </Table>
+                </Table>
+              <Total>
+                  <p>R$&nbsp;{cart.total.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}</p>
+                                </Total>
+            </Fragment>
           ) : (
-            <p>O carrinho está vazio!</p>
+            <Feedback>
+              <p>
+                O carrinho está vazio&nbsp;&nbsp;
+                <i className="fa fa-meh-o" aria-hidden="true" />
+              </p>
+            </Feedback>
           )}
         </Container>
       );
