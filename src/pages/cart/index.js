@@ -33,16 +33,22 @@ class Cart extends Component {
                 <TableHeader>QTD</TableHeader>
                 <TableHeader>SUBTOTAL</TableHeader>
               </TableRow>
-              <TableRow>
-                {cartItems.map(item => (
+              {cartItems.map(item => (
+                <TableRow>
                   <Fragment>
                     <TableData>{item.name}</TableData>
-                    <TableData>{item.price}</TableData>
-                    <TableData>data3</TableData>
-                    <TableData>data4</TableData>
+                    <TableData>
+                                        R$&nbsp;
+                      {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
+                    </TableData>
+                    <TableData>{item.quantity}</TableData>
+                    <TableData>
+                                        R$&nbsp;
+                      {(item.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
+                    </TableData>
                   </Fragment>
-                ))}
-              </TableRow>
+                </TableRow>
+              ))}
             </Table>
           ) : (
             <p>O carrinho está vazio!</p>

@@ -18,7 +18,9 @@ export const TableHeader = styled.th`
     font-weight: bold;
 `;
 
-export const TableRow = styled.tr``;
+export const TableRow = styled.tr`
+    width: 100%;
+`;
 
 export const TableData = styled.td`
     text-align: center;
