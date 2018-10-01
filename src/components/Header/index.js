@@ -10,7 +10,7 @@ const Header = ({ cart }) => (
     <Link to="/carrinho">
       <i className="fa fa-shopping-cart" aria-hidden="true" />
             &nbsp;Meu Carrinho&nbsp;(
-      {cart.data.length}
+      {cart.items}
 )
     </Link>
   </HeaderContainer>

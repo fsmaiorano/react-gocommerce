@@ -18,11 +18,22 @@ export default function cart(state = INITIAL_STATE, action) {
         ...state,
       };
     case Types.ADD_CART:
+      const item = state.data.filter(x => x.id === action.payload.item.id)[0];
+      if (!item) {
+        action.payload.item.quantity = 1;
+        return {
+          ...state,
+          items: state.items + 1,
+          data: [...state.data, action.payload.item],
+        };
+      }
+      item.quantity += +1;
       return {
         ...state,
         items: state.items + 1,
-        data: [...state.data, action.payload.item],
+        data: [item],
       };
+
     case Types.DELETE_CART:
       return {
         ...state,
