@@ -28,6 +28,7 @@ class Cart extends Component {
           {!!cartItems && cartItems.length > 0 ? (
             <Table>
               <TableRow>
+                <TableHeader />
                 <TableHeader>PRODUTO</TableHeader>
                 <TableHeader>VALOR</TableHeader>
                 <TableHeader>QTD</TableHeader>
@@ -36,7 +37,13 @@ class Cart extends Component {
               {cartItems.map(item => (
                 <TableRow>
                   <Fragment>
-                    <TableData>{item.name}</TableData>
+                    <TableData image>
+                      <img src={item.image} alt="product" />
+                    </TableData>
+                    <TableData>
+                      <p>{item.name}</p>
+                      <p><small>{item.brand}</small></p>
+                    </TableData>
                     <TableData>
                                         R$&nbsp;
                       {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}

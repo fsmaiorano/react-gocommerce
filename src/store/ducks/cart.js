@@ -31,7 +31,7 @@ export default function cart(state = INITIAL_STATE, action) {
       return {
         ...state,
         items: state.items + 1,
-        data: [item],
+        data: [...state.data, ...item],
       };
 
     case Types.DELETE_CART:

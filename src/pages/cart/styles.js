@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
@@ -11,11 +11,12 @@ export const Container = styled.div`
 `;
 
 export const Table = styled.table`
-    width: 100%;
+    width: 70%;
 `;
 
 export const TableHeader = styled.th`
     font-weight: bold;
+    text-align: left;
 `;
 
 export const TableRow = styled.tr`
@@ -23,6 +24,16 @@ export const TableRow = styled.tr`
 `;
 
 export const TableData = styled.td`
-    text-align: center;
+    text-align: left;
     font-size: 1.9rem;
+
+    ${props =>
+    props.image
+        && css`
+            width: 10%;
+            img {
+                width: 10rem;
+                margin-right: 3rem;
+            }
+        `};
 `;
