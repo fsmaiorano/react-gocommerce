@@ -35,8 +35,12 @@ export default function cart(state = INITIAL_STATE, action) {
       };
 
     case Types.DELETE_CART:
+      debugger;
+      const filtered = state.data.filter(x => x.id !== action.payload.item.id);
+      state.items -= action.payload.item.quantity;
       return {
         ...state,
+        data: [...filtered],
       };
     default:
       return state;

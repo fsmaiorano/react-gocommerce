@@ -12,6 +12,9 @@ export const Container = styled.div`
 
 export const Table = styled.table`
     width: 70%;
+    border: 1px solid #dddddd;
+    padding: 3rem;
+    margin-top: 2rem;
 `;
 
 export const TableHeader = styled.th`
@@ -26,6 +29,15 @@ export const TableRow = styled.tr`
 export const TableData = styled.td`
     text-align: left;
     font-size: 1.9rem;
+
+    small {
+        color: grey;
+    }
+
+    i {
+        color: grey;
+        cursor: pointer;
+    }
 
     ${props =>
     props.image

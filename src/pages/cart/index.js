@@ -8,24 +8,17 @@ import {
 } from './styles';
 
 class Cart extends Component {
-    state = {
-      cartItems: null,
+
+    removeItem = (item) => {
+      const { deleteCart } = this.props;
+      deleteCart(item);
     };
 
-    componentDidMount() {
-      const { cart } = this.props;
-      if (cart) {
-        this.setState({ cartItems: cart.data });
-      }
-    }
-
-    removeItem = (item) => {};
-
     render() {
-      const { cartItems } = this.state;
+    const { cart } = this.props;
       return (
         <Container>
-          {!!cartItems && cartItems.length > 0 ? (
+          {!!cart && cart.data.length > 0 ? (
             <Table>
               <TableRow>
                 <TableHeader />
@@ -33,8 +26,9 @@ class Cart extends Component {
                 <TableHeader>VALOR</TableHeader>
                 <TableHeader>QTD</TableHeader>
                 <TableHeader>SUBTOTAL</TableHeader>
+                <TableHeader />
               </TableRow>
-              {cartItems.map(item => (
+              {cart.data.map(item => (
                 <TableRow>
                   <Fragment>
                     <TableData image>
@@ -53,6 +47,9 @@ class Cart extends Component {
                                         R$&nbsp;
                       {(item.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
                     </TableData>
+                    <TableData>
+                      <i className="fa fa-close" aria-hidden="true" onClick={() => this.removeItem(item)} />
+                    </TableData>
                   </Fragment>
                 </TableRow>
               ))}
@@ -69,4 +66,6 @@ const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
