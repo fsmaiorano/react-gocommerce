@@ -48,14 +48,14 @@ class Cart extends Component {
                           <small>{item.brand}</small>
                         </p>
                       </TableData>
-                      <TableData>
+                      <TableData price>
                                             R$&nbsp;
                         {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
                       </TableData>
                       <TableData>
                         <input value={item.quantity} onChange={$event => this.updateQuantity(item, $event)} />
                       </TableData>
-                      <TableData>
+                      <TableData price>
                                             R$&nbsp;
                         {(item.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
                       </TableData>

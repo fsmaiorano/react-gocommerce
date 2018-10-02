@@ -22,6 +22,7 @@ export const Table = styled.table`
 export const TableHeader = styled.th`
     font-weight: bold;
     text-align: left;
+    color: grey;
 `;
 
 export const TableRow = styled.tr`
@@ -41,6 +42,14 @@ export const TableData = styled.td`
         cursor: pointer;
     }
 
+    input {
+        border: none;
+        font-size: 2rem;
+        width: 6rem;
+        text-align: center;
+        height: 4rem;
+    }
+
     ${props =>
     props.image
         && css`
@@ -49,6 +58,13 @@ export const TableData = styled.td`
                 width: 10rem;
                 margin-right: 3rem;
             }
+        `};
+
+    ${props =>
+    props.price
+        && css`
+            color: #54b6a9;
+            font-weight: bold;
         `};
 `;
 
