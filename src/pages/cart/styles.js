@@ -57,6 +57,8 @@ export const Total = styled.div`
     position: relative;
     text-align: right;
     width: 70%;
+    font-weight: bold;
+    margin-top: 3rem;
 `;
 
 export const Feedback = styled.div`
