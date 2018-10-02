@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as CartActions } from '../../store/ducks/cart';
@@ -8,18 +9,33 @@ import {
 } from './styles';
 
 class Cart extends Component {
+    static propTypes = {
+      addCart: PropTypes.func.isRequired,
+      deleteCart: PropTypes.func.isRequired,
+      cart: PropTypes.shape({
+        data: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number,
+            price: PropTypes.number,
+            name: PropTypes.string,
+            brand: PropTypes.string,
+            image: PropTypes.string,
+          }),
+        ),
+      }).isRequired,
+    };
+
     removeItem = (item) => {
-      const { cart, deleteCart } = this.props;
-    //   cart.data = cart.data.filter(x => x.id !== item.id);
+      const { deleteCart } = this.props;
       deleteCart(item);
     };
 
     updateQuantity = (item, event) => {
       const { value } = event.target;
       const { addCart } = this.props;
-      
-      addCart(item, parseInt(value));
-    }
+
+      addCart(item, parseInt(value, 0));
+    };
 
     render() {
       const { cart } = this.props;
@@ -37,7 +53,7 @@ class Cart extends Component {
                   <TableHeader />
                 </TableRow>
                 {cart.data.map(item => (
-                  <TableRow>
+                  <TableRow key={item.id}>
                     <Fragment>
                       <TableData image>
                         <img src={item.image} alt="product" />

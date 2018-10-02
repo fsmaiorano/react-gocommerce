@@ -9,7 +9,7 @@ import { Container, Product } from './styles';
 
 class Products extends Component {
     static propTypes = {
-      history: PropTypes.func.isRequired,
+      history: PropTypes.shape({ push: PropTypes.func }).isRequired,
       setProduct: PropTypes.func.isRequired,
       products: PropTypes.shape({
         data: PropTypes.arrayOf(
