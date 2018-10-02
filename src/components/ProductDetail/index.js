@@ -7,19 +7,9 @@ import { Container } from './styles';
 
 class ProductDetail extends Component {
     addItemToCart = (product) => {
-      const { cart, addCart, updateCart } = this.props;
+      const { addCart } = this.props;
 
-      if (!('quantity' in product)) {
-        product.quantity = 1;
-      } else {
-        product.quantity += 1;
-      }
-
-      if (cart.data.filter(p => p.id === product.id).length > 0) {
-        return updateCart(product);
-      }
-
-      return addCart(product);
+      return addCart(product, 1);
     };
 
     render() {

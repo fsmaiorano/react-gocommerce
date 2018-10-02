@@ -16,14 +16,9 @@ class Cart extends Component {
 
     updateQuantity = (item, event) => {
       const { value } = event.target;
-      const { cart, updateCart } = this.props;
-
-if(value !== 0 && value !== "") {
-        let index = cart.data.indexOf(item);
-        cart.data[index].quantity = parseInt(value);
-      return updateCart(item);
-}
-return;
+      const { addCart } = this.props;
+      
+      addCart(item, parseInt(value));
     }
 
     render() {
