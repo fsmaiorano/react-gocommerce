@@ -10,8 +10,8 @@ import {
 class Cart extends Component {
     removeItem = (item) => {
       const { cart, deleteCart } = this.props;
-      cart.data = cart.data.filter(x => x.id !== item.id);
-      deleteCart(cart);
+    //   cart.data = cart.data.filter(x => x.id !== item.id);
+      deleteCart(item);
     };
 
     updateQuantity = (item, event) => {

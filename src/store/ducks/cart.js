@@ -8,8 +8,6 @@ export const Types = {
   DELETE_CART: 'cart/DELETE_CART',
   DELETE_CART_SUCCESS: 'cart/DELETE_CART_SUCCESS',
   DELETE_CART_FAILURE: 'cart/DELETE_CART_FAILURE',
-
-  UPDATE_CART: 'cart/UPDATE_CART',
 };
 
 const INITIAL_STATE = {
@@ -37,16 +35,21 @@ export default function cart(state = INITIAL_STATE, action) {
         total: action.payload.totalItems,
         quantity: action.payload.totalQuantity,
       };
-    case Types.UPDATE_CART:
-      return {
-        data: [...state.data],
-      };
+
     case Types.DELETE_CART:
-      debugger;
-      //   state.items -= action.payload.item.quantity;
       return {
         ...state,
-        data: [...state.data],
+      };
+    case Types.DELETE_CART_SUCCESS:
+      return {
+        ...state,
+        data: [...action.payload.data],
+        total: action.payload.totalItems,
+        quantity: action.payload.totalQuantity,
+      };
+    case Types.DELETE_CART_FAILURE:
+      return {
+        ...state,
       };
     default:
       return state;
@@ -58,6 +61,7 @@ export const Creators = {
     type: Types.GET_CART,
     payload: { cart },
   }),
+
   addCart: (product, quantity) => ({
     type: Types.ADD_CART,
     payload: { product, quantity },
@@ -71,12 +75,16 @@ export const Creators = {
     payload: { feedback },
   }),
 
-  updateCart: item => ({
-    type: Types.UPDATE_CART,
-    payload: { item },
-  }),
-  deleteCart: item => ({
+  deleteCart: product => ({
     type: Types.DELETE_CART,
-    payload: { item },
+    payload: { product },
+  }),
+  deleteCartSuccess: (data, totalItems, totalQuantity) => ({
+    type: Types.DELETE_CART_SUCCESS,
+    payload: { data, totalItems, totalQuantity },
+  }),
+  deleteCartFailure: feedback => ({
+    type: Types.DELETE_CART_FAILURE,
+    payload: { feedback },
   }),
 };

@@ -21,3 +21,18 @@ export function* addCart(action) {
     yield put(CartActions.addCartFailure('Erro ao colocar o produto no carrinho'));
   }
 }
+
+export function* deleteCart(action) {
+  try {
+    const { data, total, quantity } = yield select(state => state.cart);
+    const index = data.findIndex(p => p.id === action.payload.product.id);
+    const filteredData = data.filter(x => x.id !== action.payload.product.id);
+
+    const sumItems = total - data[index].price * data[index].quantity;
+    const sumQuantity = quantity - data[index].quantity;
+
+    yield put(CartActions.deleteCartSuccess(filteredData, sumItems, sumQuantity));
+  } catch (err) {
+    yield put(CartActions.deleteCartFailure('Erro ao remover o produto do carrinho'));
+  }
+}

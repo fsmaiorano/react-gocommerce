@@ -7,7 +7,7 @@ import { Types as ProductsTypes } from '../ducks/products';
 import { getProducts, getProductById } from './products';
 
 import { Types as CartTypes } from '../ducks/cart';
-import { addCart } from './cart';
+import { addCart, deleteCart } from './cart';
 
 export default function* rootSaga() {
   return yield all([
@@ -15,5 +15,6 @@ export default function* rootSaga() {
     takeLatest(ProductsTypes.GET_PRODUCTS, getProducts),
     takeLatest(ProductsTypes.GET_PRODUCT_BY_ID, getProductById),
     takeLatest(CartTypes.ADD_CART, addCart),
+    takeLatest(CartTypes.DELETE_CART, deleteCart),
   ]);
 }
